@@ -2,7 +2,7 @@
   "name": "rk_bajaj_cms",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
@@ -12,10 +12,14 @@
   "author": "coolorbi",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.1"
   },
   "devDependencies": {
+    "colors": "^1.4.0",
     "concurrently": "^7.0.0",
     "dotenv": "^16.0.0",
     "nodemon": "^2.0.15"
