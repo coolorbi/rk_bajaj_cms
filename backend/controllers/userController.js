@@ -62,6 +62,15 @@ const loginUser = asyncHandler(async (req, res, next) => {
   }
 });
 
+const getProfile = asyncHandler(async (req, res, next) => {
+  res.status(200).json({
+    _id: req.user._id,
+    email: req.user.email,
+    mobile: req.user.mobile,
+    name: req.user.name,
+  });
+});
+
 const getToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET);
 };
@@ -69,4 +78,5 @@ const getToken = (id) => {
 module.exports = {
   createUser,
   loginUser,
+  getProfile,
 };
