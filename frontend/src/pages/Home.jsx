@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -14,6 +15,9 @@ const Home = () => {
               <button className="btn btn-secondary  px-5 py-2">
                 Contact Us
               </button>
+              <Link to="/tickets" className="btn">
+                Link to tickets
+              </Link>
             </div>
           </div>
           <div className="col-md-6">
