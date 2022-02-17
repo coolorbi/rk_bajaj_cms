@@ -6,9 +6,12 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 import Register from './pages/Register';
+import Schdeule from './pages/Schdeule';
 import Support from './pages/Support';
 import Tickets from './pages/Tickets';
+import ViewDocuments from './pages/ViewDocuments';
 
 function App() {
   return (
@@ -25,6 +28,15 @@ function App() {
             </Route>
             <Route path="/tickets" element={<PrivateRoute />}>
               <Route exact path="/tickets" element={<Tickets />} />
+            </Route>
+            <Route path="/profile" element={<PrivateRoute />}>
+              <Route exact path="/profile" element={<Profile />} />
+            </Route>
+            <Route path="/schedule" element={<PrivateRoute />}>
+              <Route exact path="/schedule" element={<Schdeule />} />
+            </Route>
+            <Route path="/view-documents" element={<PrivateRoute />}>
+              <Route exact path="/view-documents" element={<ViewDocuments />} />
             </Route>
           </Routes>
         </main>

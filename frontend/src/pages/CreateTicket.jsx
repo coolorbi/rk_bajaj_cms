@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CreateTicket = () => {
-  return <div>CreateTicket</div>;
+  return <section>CreateTicket</section>;
 };
 
 export default CreateTicket;

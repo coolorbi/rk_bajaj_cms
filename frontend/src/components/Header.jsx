@@ -50,7 +50,7 @@ const Header = () => {
                 <>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/profile">
-                      <i class="fa-solid fa-user"></i> {user.name}
+                      <i className="fa-solid fa-user"></i> {user.name}
                     </NavLink>
                   </li>
                   <li className="nav-item">
@@ -58,7 +58,7 @@ const Header = () => {
                       onClick={() => dispatch(logout())}
                       className="btn btn-secondary btn-sm"
                     >
-                      <i class="fa-solid fa-right-from-bracket"></i> Logout
+                      <i className="fa-solid fa-right-from-bracket"></i> Logout
                     </button>
                   </li>
                 </>

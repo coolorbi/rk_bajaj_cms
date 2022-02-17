@@ -50,12 +50,18 @@ const ticketSlice = createSlice({
   name: 'ticket',
   initialState,
   reducers: {
-    reset: (state) => initialState,
+    reset: (state) => {
+      state.isError = false;
+      state.ticket = {};
+      state.tickets = [];
+      state.isLoading = false;
+      state.isSuccess = false;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getTickets.pending, (state) => {
-        state.isLoading = false;
+        state.isLoading = true;
       })
       .addCase(getTickets.fulfilled, (state, action) => {
         state.isLoading = false;

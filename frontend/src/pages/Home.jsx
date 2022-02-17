@@ -2,54 +2,73 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const mystyle = {
+    background:
+      "linear-gradient(to right,rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('/images/postor.jpg')",
+    backgroundSize: 'cover',
+  };
   return (
-    <section>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            <div className="text-center mt-5 p-3">
-              <h2 className="display-4 text-center">Welcome to Rk Bajaj</h2>
-              <p className="text-center lead">
-                One Stop Destination for all of your biking needs.
-              </p>
-              <button className="btn btn-secondary  px-5 py-2">
-                Contact Us
-              </button>
-              <Link to="/tickets" className="btn">
-                Link to tickets
-              </Link>
-            </div>
+    <>
+      <section style={mystyle} className="py-5 text-center">
+        <div className="container">
+          <div className="text-center p-5">
+            <h2 className="display-4 text-center text-white">
+              Welcome to Rk Bajaj
+            </h2>
+            <p className="text-center lead text-white d-sm-none d-md-block">
+              One Stop Destination for all of your biking needs.
+            </p>
+            <button className="btn btn-secondary  px-5 mt-2 ">
+              Contact Us
+            </button>
+            <Link to="/support" className="btn btn-warning px-5 mt-2 ">
+              Create Ticket
+            </Link>
           </div>
-          <div className="col-md-6">
-            <div className="card mt-5 p-4 text-white bg-secondary">
-              <div class="table-responsive">
-                <table class="table table-borderless text-white">
-                  <tbody>
-                    <tr>
-                      <th scope="row">Service Due On:</th>
-                      <td>11/06/2022</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Service No:</th>
-                      <td>4 (Free)</td>
-                    </tr>
-                  </tbody>
-                </table>
+        </div>
+      </section>
+      <section className="p-5">
+        <div className="container">
+          <h2 className="text-center display-4">
+            Exclusive Services only for You
+          </h2>
+          <div className="row">
+            <div className="col-md-6 mt-4">
+              <div className="card text-center shadow-lg">
+                <div className="card-body">
+                  <i className="fa-solid fa-screwdriver-wrench fa-2x text-primary"></i>
+                  <h4 className="card-title mt-2">
+                    <strong>Schedule Your Service</strong>{' '}
+                  </h4>
+                  <p className="card-text">
+                    Schedule your Bike Service with Us, without any hassle.
+                  </p>
+                  <Link to="/schedule" className="btn btn-primary">
+                    Schedule <i className="ml-2 fa-solid fa-calendar-plus"></i>
+                  </Link>
+                </div>
               </div>
-              <button className="btn btn-block btn-info">
-                Set a Service Reminder
-              </button>
-              <small className="text-muted text-white">
-                you will get alerted on email 4 days before due date.
-              </small>
-              <button className="btn btn-block btn-danger mt-2">
-                View Your Documents (RC/Insurance)
-              </button>
+            </div>
+            <div className="col-md-6 mt-4">
+              <div className="card text-center shadow-lg">
+                <div className="card-body">
+                  <i className="fa-solid fa-file-invoice fa-2x"></i>
+                  <h4 className="card-title mt-2">
+                    <strong>View Your Documents</strong>{' '}
+                  </h4>
+                  <p className="card-text">
+                    Get Your Insurance and RC withour ever leaving your home.
+                  </p>
+                  <Link to="/view-documents" className="btn btn-secondary">
+                    Download RC / Insurance
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

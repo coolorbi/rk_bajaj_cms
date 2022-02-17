@@ -31,11 +31,11 @@ const Login = () => {
     if (isError) {
       toast.error(message);
     }
-    if (isSuccess || user) {
+    if (isSuccess) {
       navigate('/');
     }
     dispatch(reset());
-  }, [isError, isSuccess, dispatch, user, navigate]);
+  }, [isError, isSuccess, dispatch, navigate]);
   if (isLoading) {
     return <Spinner />;
   }

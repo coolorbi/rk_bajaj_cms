@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTickets } from '../features/ticket/ticketSlice';
 import Spinner from '../components/Spinner';
-import TicketItem from '../components/TicketItem';
+import TicketList from '../components/TicketList';
 
 const Tickets = () => {
   const dispatch = useDispatch();
@@ -14,16 +14,11 @@ const Tickets = () => {
     dispatch(getTickets());
   }, []);
 
-  if (isLoading) {
-    return <Spinner />;
-  }
   return (
     <section>
       <div className="container">
-        <h1 className="text-center display-3">Tickets</h1>
-        {tickets.map((ticket) => (
-          <TicketItem key={ticket._id} ticket={ticket} />
-        ))}
+        <h1 className="text-center my-5 display-4">My Tickets</h1>
+        {isLoading ? <Spinner /> : <TicketList tickets={tickets} />}
       </div>
     </section>
   );
