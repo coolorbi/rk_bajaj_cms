@@ -2,6 +2,16 @@ const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
+
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: process.env.SENDGRID_API,
+    },
+  })
+);
 
 const createUser = asyncHandler(async (req, res, next) => {
   const { name, email, password, mobile } = req.body;
@@ -25,6 +35,43 @@ const createUser = asyncHandler(async (req, res, next) => {
     mobile,
   });
   if (user) {
+    transporter.sendMail({
+      to: email,
+      from: 'hello@rkbajaj.in',
+      subject: 'Welcome to RK BAJAJ',
+      html: `<!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+        </head>
+        <body style="text-align: center">
+          <h2 style="margin-top: 50px">Welcome to Rk Bajaj</h2>
+          <h3>Hello ${name},</h3>
+          <p>We hope you are doing well, and riding safely!</p>
+          <p>
+            Thanks for Choosing US!
+            <p>With our new Dashboard you can download your
+              Insurance and RC, Book Your Vehicle Service With a Click of a Button!</p> 
+          </p>
+          <a
+            style="
+              background-color: #2780e3;
+              padding: 15px 30px;
+              color: #fff;
+              margin-top: 10px;
+              display: inline-block;
+              text-decoration: none;
+            "
+            href="https://www.rkbajaj.in"
+            >Get Started</a
+          >
+        </body>
+      </html>
+      `,
+    });
     res.status(201).json({
       _id: user._id,
       name: user.name,

@@ -18,9 +18,9 @@ const Home = () => {
             <p className="text-center lead text-white d-sm-none d-md-block">
               One Stop Destination for all of your biking needs.
             </p>
-            <button className="btn btn-secondary  px-5 mt-2 ">
+            <Link to="/contact" className="btn btn-secondary  px-5 mt-2 ">
               Contact Us
-            </button>
+            </Link>
             <Link to="/support" className="btn btn-warning px-5 mt-2 ">
               Create Ticket
             </Link>
