@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const ContactUS = () => {
   const [name, setName] = useState('');
@@ -7,6 +8,7 @@ const ContactUS = () => {
   const [message, setMessage] = useState('');
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    toast.success('Thanks for Reaching to Us, We will get to you Soon!');
   };
   return (
     <section className="py-5">
@@ -34,6 +36,7 @@ const ContactUS = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div class="form-group">
@@ -44,6 +47,7 @@ const ContactUS = () => {
                   id="mobile"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
+                  required
                 />
               </div>
               <div class="form-group">
@@ -54,6 +58,7 @@ const ContactUS = () => {
                   rows="3"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  required
                 ></textarea>
               </div>
               <button className="btn btn-primary btn-block" type="submit">
