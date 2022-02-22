@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import Spinner from '../components/Spinner';
 
 const ContactUS = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const { data } = await axios.post('/api/mail', {
         to: email,
-        subject: 'contact',
-        message: message,
+        subject: 'Copy of Your Request',
+        message: `Hi ${name}, below is the copy of your contact request. </br> ${message}`,
       });
+
+      setLoading(false);
+
       if (data.message === 'success') {
         toast.success(
           'Thanks For Reaching out. we have got your mail,we will reach you soon!'
@@ -23,9 +29,13 @@ const ContactUS = () => {
         toast.error(data.message);
       }
     } catch (error) {
+      setLoading(false);
       console.log(error.message);
     }
   };
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <section className="py-5">
       <div className="container">
@@ -33,42 +43,42 @@ const ContactUS = () => {
         <div className="row">
           <div className="col-md-6">
             <form onSubmit={onSubmitHandler}>
-              <div class="form-group">
-                <label for="name">Name</label>
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  class="form-control"
+                  className="form-control"
                   id="name"
                   required
                 />
               </div>
-              <div class="form-group">
-                <label for="email">Email address</label>
+              <div className="form-group">
+                <label htmlFor="email">Email address</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div class="form-group">
-                <label for="mobile">Mobile Number</label>
+              <div className="form-group">
+                <label htmlFor="mobile">Mobile Number</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="mobile"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
                   required
                 />
               </div>
-              <div class="form-group">
-                <label for="message">Message</label>
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   id="message"
                   rows="3"
                   value={message}

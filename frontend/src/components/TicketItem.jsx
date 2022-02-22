@@ -5,7 +5,7 @@ const TicketItem = ({ ticket }) => {
   return (
     <div className="col-md-6 ">
       <Link to={`/tickets/${ticket._id}`}>
-        <div class="card border-primary text-secondary rounded mb-3">
+        <div className="card border-primary text-secondary rounded mb-3">
           <div className="card-header">
             <div
               style={{
@@ -24,9 +24,9 @@ const TicketItem = ({ ticket }) => {
               <span>{new Date(ticket.createdAt).toLocaleString('en-IN')}</span>
             </div>
           </div>
-          <div class="card-body">
-            <h4 class="card-title">Product: {ticket.product}</h4>
-            <p class="card-text">Description: {ticket.description}</p>
+          <div className="card-body">
+            <h4 className="card-title">Product: {ticket.product}</h4>
+            <p className="card-text">Description: {ticket.description}</p>
           </div>
         </div>
       </Link>

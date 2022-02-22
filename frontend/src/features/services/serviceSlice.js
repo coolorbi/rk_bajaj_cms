@@ -31,6 +31,26 @@ export const createService = createAsyncThunk(
   }
 );
 
+export const getUserServices = createAsyncThunk(
+  'service/getUserServices',
+  async (_, thunkAPI) => {
+    try {
+      return await serviceService.getUserServices(
+        thunkAPI.getState().auth.user.token
+      );
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const serviceSlice = createSlice({
   name: 'service',
   initialState,
@@ -60,6 +80,19 @@ const serviceSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(getUserServices.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUserServices.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.services = action.payload;
+      })
+      .addCase(getUserServices.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.type;
       });
   },
 });

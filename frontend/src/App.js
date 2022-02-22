@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
 import Schdeule from './pages/Schdeule';
+import ScheduledService from './pages/ScheduledService';
 import Support from './pages/Support';
 import Ticket from './pages/Ticket';
 import Tickets from './pages/Tickets';
@@ -42,6 +43,13 @@ function App() {
             </Route>
             <Route path="/view-documents" element={<PrivateRoute />}>
               <Route exact path="/view-documents" element={<ViewDocuments />} />
+            </Route>
+            <Route path="/scheduled-services" element={<PrivateRoute />}>
+              <Route
+                exact
+                path="/scheduled-services"
+                element={<ScheduledService />}
+              />
             </Route>
             <Route path="/contact" element={<ContactUS />} />
           </Routes>

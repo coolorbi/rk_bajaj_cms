@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { reset, createService } from '../features/services/serviceSlice';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Spinner from '../components/Spinner';
 
 const Schdeule = () => {
   const dispatch = useDispatch();
@@ -26,6 +28,11 @@ const Schdeule = () => {
       serviceDate: date,
     };
     dispatch(createService(serviceData));
+    axios.post('/api/mail', {
+      to: email,
+      subject: 'Service Request',
+      message: `Hi ${name}, below is the copy of your Service Request. </br> ${message}`,
+    });
   };
 
   useEffect(() => {
@@ -37,6 +44,10 @@ const Schdeule = () => {
     }
     reset();
   }, [navigate, isError, isSuccess]);
+
+  if (isLoading) {
+    <Spinner />;
+  }
 
   return (
     <section className="p-5">
@@ -105,9 +116,12 @@ const Schdeule = () => {
             Submit
           </button>
         </form>
-        <button className="btn btn-block btn-secondary mt-2">
+        <Link
+          to="/scheduled-services"
+          className="btn btn-block btn-secondary mt-2"
+        >
           View Booked Services
-        </button>
+        </Link>
       </div>
     </section>
   );

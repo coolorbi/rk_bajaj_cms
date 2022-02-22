@@ -11,7 +11,7 @@ const Support = () => {
           to="/tickets"
           className="btn rounded btn-secondary btn-block my-5"
         >
-          My Tickets <i class="ml-2 fa-solid fa-arrow-right-long"></i>
+          My Tickets <i className="ml-2 fa-solid fa-arrow-right-long"></i>
         </Link>
       </div>
     </section>

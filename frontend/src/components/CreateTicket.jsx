@@ -82,7 +82,7 @@ const CreateTicket = () => {
           </select>
         </div>
         <div className="form-group">
-          <label for="exampleFormControlTextarea1">Description</label>
+          <label htmlFor="exampleFormControlTextarea1">Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}

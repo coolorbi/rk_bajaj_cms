@@ -93,12 +93,12 @@ const Ticket = () => {
             <NoteItem key={note._id} note={note} />
           ))}
 
-          <div class="form-group mt-2">
+          <div className="form-group mt-2">
             <input
               type="text"
               value={noteText}
               onChange={(e) => setNoteText(e.target.value)}
-              class="form-control"
+              className="form-control"
               id="message"
               placeholder="Enter Message"
             />
