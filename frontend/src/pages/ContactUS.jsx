@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const ContactUS = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
   const [message, setMessage] = useState('');
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
-    toast.success('Thanks for Reaching to Us, We will get to you Soon!');
+    try {
+      const { data } = await axios.post('/api/mail', {
+        to: email,
+        subject: 'contact',
+        message: message,
+      });
+      if (data.message === 'success') {
+        toast.success(
+          'Thanks For Reaching out. we have got your mail,we will reach you soon!'
+        );
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   return (
     <section className="py-5">
@@ -36,7 +52,6 @@ const ContactUS = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  required
                 />
               </div>
               <div class="form-group">
